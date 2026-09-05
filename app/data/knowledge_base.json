@@ -1,0 +1,152 @@
+[
+  {
+    "id": 1,
+    "title": "What is Retrieval-Augmented Generation (RAG)?",
+    "content": "RAG (Retrieval-Augmented Generation) is an AI framework that combines large language models (LLMs) with external knowledge bases to improve output quality. It works in two phases: retrieval and generation. In the retrieval phase, the system searches a knowledge base for relevant information based on the user's query. In the generation phase, the retrieved information is added to the prompt and the LLM generates a more accurate, contextually relevant response. RAG helps reduce hallucinations and provides up-to-date, domain-specific answers without retraining the model.",
+    "tags": [
+      "rag",
+      "architecture",
+      "beginner"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "How RAG Works Step by Step",
+    "content": "RAG systems follow a clear workflow: (1) User submits a query. (2) The retrieval model searches the knowledge base using techniques like vector search or keyword matching. (3) Relevant documents or snippets are returned and pre-processed. (4) The retrieved information is appended to the original query to create an augmented prompt. (5) The LLM processes this enriched prompt and generates a response. (6) The response can include citations linking back to the source documents. This architecture enables LLMs to access information outside their training data.",
+    "tags": [
+      "rag",
+      "workflow",
+      "intermediate"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "How to Choose the Right LLM for Your Task",
+    "content": "Choosing an LLM requires balancing accuracy, latency, cost, and privacy. Start by clearly defining your task (e.g., classification, generation, reasoning). Apply hard filters first: data privacy requirements, deployment mode (cloud vs. on-prem), context window size, and budget. Then classify your task by intelligence tier (simple extraction vs. complex reasoning). Shortlist 3-5 models and evaluate them on 100-200 real examples from your workload. Finally, design a routing strategy rather than relying on a single model for all tasks.",
+    "tags": [
+      "llm",
+      "model-selection",
+      "intermediate"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "LLM Selection: Optimize for Accuracy First",
+    "content": "When selecting models, optimize for accuracy before considering cost and latency. Start with the most capable model available to establish your accuracy target. Log all responses so they can be used later for distillation into smaller models. Once you hit your accuracy target, test smaller or fine-tuned models to maintain that accuracy while reducing cost and latency. Use retrieval-augmented generation to further optimize accuracy by grounding responses in verified knowledge bases.",
+    "tags": [
+      "llm",
+      "model-selection",
+      "advanced"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "FastAPI Production Deployment Best Practices",
+    "content": "For production FastAPI deployments, never run Uvicorn directly. Use Gunicorn with Uvicorn workers (4-8 workers per CPU core). Deploy behind a reverse proxy like Nginx, Traefik, or AWS ALB for TLS termination and security. Use multi-stage Docker builds to create small, secure images without compiler tools. Pass worker count as an environment variable (WEB_CONCURRENCY) calculated based on your infrastructure limits. Disable OpenAPI docs in production by setting openapi_url=None. Use JSON logging for integration with monitoring tools.",
+    "tags": [
+      "fastapi",
+      "deployment",
+      "advanced"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Docker Best Practices for FastAPI",
+    "content": "Production Docker images for FastAPI should be small and secure. Use multi-stage builds: first stage installs dependencies and builds the app, second stage copies only what's needed. Don't run as root in Docker - create a distinct appuser. Implement proper health checks at /health and /ready endpoints. Use Docker Secrets or Kubernetes Secrets for sensitive configuration. Enable graceful shutdown with timeouts. Monitor with Prometheus and Grafana. Implement auto-scaling based on CPU and memory usage.",
+    "tags": [
+      "fastapi",
+      "docker",
+      "advanced"
+    ]
+  },
+  {
+    "id": 7,
+    "title": "What is a Vector Database?",
+    "content": "A vector database stores data as mathematical vectors (embeddings) that capture semantic meaning. Text, images, or other data are converted to vectors using embedding models. Similar items have vectors that are close together in the vector space. Vector databases enable semantic search by finding vectors similar to a query vector using distance metrics like cosine similarity. Popular vector databases include Chroma, Qdrant, Pinecone, and Weaviate. They are essential for RAG systems to retrieve relevant documents based on meaning rather than keywords.",
+    "tags": [
+      "vector-database",
+      "embeddings",
+      "intermediate"
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Understanding Text Embeddings",
+    "content": "Text embeddings are numerical representations of text that capture semantic meaning. Models like sentence-transformers convert text into fixed-length vectors (e.g., 384 or 768 dimensions). Similar texts produce similar vectors. Embeddings enable semantic search, clustering, and retrieval in RAG systems. To use embeddings: (1) Choose an embedding model (e.g., all-MiniLM-L6-v2 for speed, all-mpnet-base-v2 for quality). (2) Embed your documents and store vectors. (3) Embed queries at runtime. (4) Find nearest neighbors using cosine similarity or dot product.",
+    "tags": [
+      "embeddings",
+      "vector-database",
+      "intermediate"
+    ]
+  },
+  {
+    "id": 9,
+    "title": "How to Reduce LLM Hallucinations",
+    "content": "LLM hallucinations occur when models generate false or unsupported information. Strategies to reduce hallucinations include: (1) Use RAG to ground responses in verified sources. (2) Implement confidence scoring based on retrieval quality or log probabilities. (3) Add citations requiring the model to reference source documents. (4) Use system prompts instructing the model to say 'I don't know' when uncertain. (5) Filter responses through validation rules. (6) Implement human-in-the-loop for low-confidence answers. (7) Fine-tune on domain-specific data to improve factual accuracy.",
+    "tags": [
+      "llm",
+      "hallucination",
+      "advanced"
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Confidence Scoring for LLM Responses",
+    "content": "Confidence scoring helps assess response reliability before showing to users. Common approaches: (1) Retrieval-based confidence: use the similarity score of retrieved documents (e.g., average cosine similarity of top-3 results). (2) Log probability-based: use the model's token log probabilities (higher = more confident). (3) Self-consistency: generate multiple responses and measure agreement. (4) Entropy-based: measure prediction uncertainty across tokens. Set thresholds to route responses: high confidence for auto-reply, medium for review, low for human escalation.",
+    "tags": [
+      "confidence",
+      "evaluation",
+      "advanced"
+    ]
+  },
+  {
+    "id": 11,
+    "title": "Building a Knowledge Base for RAG",
+    "content": "A good knowledge base is critical for RAG performance. Structure documents with clear titles, content, and metadata (tags, categories, dates). Break long documents into chunks of 200-500 words for better retrieval. Include diverse content: FAQs, how-to guides, troubleshooting steps, conceptual explanations. Keep content up-to-date with regular reviews. Add metadata like difficulty level (beginner/intermediate/advanced) to enable filtered retrieval. Store in JSON, SQLite, or a vector database depending on scale. Prepare 20-100 high-quality documents as a starting point.",
+    "tags": [
+      "rag",
+      "knowledge-base",
+      "beginner"
+    ]
+  },
+  {
+    "id": 12,
+    "title": "Hybrid Search: Combining Keyword and Vector Search",
+    "content": "Hybrid search combines keyword-based search (BM25) with vector-based semantic search for better retrieval. Keyword search excels at finding exact matches and technical terms. Vector search finds semantically similar content even with different wording. Combine both by: (1) Run both searches in parallel. (2) Normalize scores from each method. (3) Use weighted sum (e.g., 0.5 * keyword_score + 0.5 * vector_score). (4) Re-rank results by combined score. Hybrid search often outperforms either method alone, especially for technical domains with specific terminology.",
+    "tags": [
+      "retrieval",
+      "hybrid-search",
+      "advanced"
+    ]
+  },
+  {
+    "id": 13,
+    "title": "API Design for AI Applications",
+    "content": "Well-designed APIs for AI applications should be clear and consistent. Use RESTful endpoints like POST /ask for queries. Return structured JSON with fields: answer (string), confidence (float 0-1), route (string: auto/review/human), sources (array of document references). Include error handling with clear error messages and HTTP status codes. Add rate limiting to prevent abuse. Use async operations for better performance. Document endpoints with OpenAPI/Swagger. Version your API (e.g., /v1/ask) for future changes without breaking clients.",
+    "tags": [
+      "api",
+      "design",
+      "intermediate"
+    ]
+  },
+  {
+    "id": 14,
+    "title": "Evaluating RAG Systems",
+    "content": "Evaluate RAG systems on multiple dimensions: (1) Retrieval quality: measure Recall@k (fraction of relevant docs in top-k results) and nDCG (ranking quality). (2) Answer quality: use human evaluation or LLM-based judges to score accuracy, completeness, and relevance. (3) Hallucination rate: fraction of responses containing false or unsupported claims. (4) Routing accuracy: how often the confidence-based routing makes correct decisions. (5) Latency: end-to-end response time. Create a golden set of 20-100 test queries with expected answers and metrics.",
+    "tags": [
+      "evaluation",
+      "rag",
+      "advanced"
+    ]
+  },
+  {
+    "id": 15,
+    "title": "Multi-Source Retrieval Architecture",
+    "content": "Production RAG systems often query multiple sources: internal knowledge base, external APIs, user history, documentation. Design a multi-source architecture: (1) Classify the query to determine which sources to query. (2) Run parallel retrieval from selected sources. (3) Merge and re-rank results by relevance and source reliability. (4) Filter out low-quality or outdated information. (5) Pass top results to the LLM with source metadata. This approach provides comprehensive answers while maintaining control over information quality and freshness.",
+    "tags": [
+      "rag",
+      "architecture",
+      "advanced"
+    ]
+  }
+]
