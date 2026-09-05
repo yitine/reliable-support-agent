@@ -6,6 +6,9 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+# Import the router for the AI /ask endpoint
+from app.api.ask import router as ask_router
+
 from app.api.auth import router as auth_router
 from app.api.health import router as health_router
 from app.core.config import settings
@@ -52,6 +55,8 @@ app.add_middleware(
 # Include routers
 app.include_router(health_router, tags=["system"])
 app.include_router(auth_router, prefix="/auth", tags=["authentication"])
+# Register the AI /ask endpoint in the FastAPI application
+app.include_router(ask_router, tags=["AI"])
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
