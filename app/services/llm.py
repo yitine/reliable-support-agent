@@ -16,7 +16,12 @@ def generate_answer(prompt: str) -> str:
             max_tokens=200,
         )
 
-        return response.choices[0].message.content
+        content = response.choices[0].message.content
 
+        if not content:
+            return "Sorry, I was unable to generate an answer at this time."
+
+        return content
+        
     except Exception:
         return "Sorry, I was unable to generate an answer at this time."

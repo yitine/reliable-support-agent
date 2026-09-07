@@ -1,0 +1,100 @@
+[
+  {
+    "query": "What is RAG?",
+    "expected_route": "knowledge_base",
+    "expected_source": 1,
+    "expected_answer": "RAG retrieves relevant information from a knowledge base and uses it to generate an answer.",
+    "generated_answer": "RAG (Retrieval-Augmented Generation) is an AI technique that fetches relevant, up-to-date information from an external knowledge base or database and feeds it to a large language model to generate more accurate, grounded, and context-specific answers instead of relying solely on its static training data."
+},
+{
+    "query": "How does retrieval augmented generation work?",
+    "expected_route": "knowledge_base",
+    "expected_source": 2,
+    "expected_answer": "RAG retrieves relevant documents, provides them as context to the language model, and generates an answer based on that context.",
+    "generated_answer": "The provided context does not contain information about how retrieval augmented generation works. It only discusses hybrid search, which combines keyword and vector search for retrieval."
+},
+    {
+        "query": "What is retrieval augmented generation used for?",
+        "expected_route": "knowledge_base",
+        "expected_source": 1,
+        "expected_answer": "RAG is used to retrieve relevant information from a knowledge base and provide it to a language model to generate more informed answers."
+    },
+    {
+        "query": "Explain knowledge retrieval in RAG systems.",
+        "expected_route": "knowledge_base",
+        "expected_source": 2,
+        "expected_answer": "RAG systems retrieve relevant documents from a knowledge base and provide them as context to a language model before generating an answer."
+    },
+    {
+        "query": "What is an embedding?",
+        "expected_route": "knowledge_base",
+        "expected_source": 8,
+        "expected_answer": "An embedding is a numerical vector representation of text that captures its semantic meaning."
+    },
+    {
+        "query": "How does semantic search work?",
+        "expected_route": "knowledge_base",
+        "expected_source": 7,
+        "expected_answer": "Semantic search uses vector representations to find information based on meaning and similarity rather than exact keyword matches."
+    },
+    {
+        "query": "What is a vector database?",
+        "expected_route": "knowledge_base",
+        "expected_source": 7,
+        "expected_answer": "A vector database stores and searches vector embeddings efficiently to retrieve semantically similar information."
+    },
+    {
+        "query": "How can I improve retrieval quality?",
+        "expected_route": "knowledge_base",
+        "expected_source": 12,
+        "expected_answer": "Retrieval quality can be improved by combining keyword search with vector search to capture both exact terminology and semantic similarity."
+    },
+  {
+    "query": "What models are suitable for image classification?",
+    "expected_route": "huggingface"
+  },
+  {
+    "query": "Which models can classify images?",
+    "expected_route": "huggingface"
+  },
+  {
+    "query": "What models are available for object detection?",
+    "expected_route": "huggingface"
+  },
+  {
+    "query": "Which models can detect objects in images?",
+    "expected_route": "huggingface"
+  },
+  {
+    "query": "What models are suitable for text classification?",
+    "expected_route": "huggingface"
+  },
+  {
+    "query": "Which models can perform sentiment analysis?",
+    "expected_route": "huggingface"
+  },
+  {
+    "query": "What models can transcribe audio?",
+    "expected_route": "huggingface"
+  },
+  {
+    "query": "What is the weather in Paris today?",
+    "expected_route": "unknown"
+  },
+  {
+    "query": "Who is the president of France?",
+    "expected_route": "unknown"
+  },
+  {
+    "query": "What is LoRA?",
+    "expected_route": "unknown"
+  },
+  {
+    "query": "Can you recommend a restaurant in Paris?",
+    "expected_route": "unknown"
+  },
+  {
+    "query": "Tell me a joke.",
+    "expected_route": "unknown"
+  }
+]
