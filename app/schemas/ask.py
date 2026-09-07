@@ -22,6 +22,7 @@ class AskResponse(BaseModel):
     """Response schema for /ask endpoint"""
     answer: str
     confidence: float = Field(..., ge=0, le=1, description="Confidence score 0-1")
+    # validated: bool
     route: str = Field(..., description="Source selected to answer the query: knowledge_base, huggingface, or unknown")
     sources: list[SourceReference] = Field(default_factory=list)
     query: str = Field(..., description="Original query for reference")

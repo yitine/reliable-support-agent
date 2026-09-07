@@ -7,6 +7,7 @@ def test_generate_answer():
     assert isinstance(answer, str)
     assert len(answer) > 0
     
+    
 def test_generate_answer_with_empty_prompt():
     answer = generate_answer("")
 
@@ -26,3 +27,4 @@ def test_generate_answer_handles_api_error(monkeypatch):
     answer = generate_answer("Explain RAG.")
 
     assert answer == "Sorry, I was unable to generate an answer at this time."
+
